@@ -1,27 +1,27 @@
 pipeline {
     agent any
-    // parameters {
-    //     choice(
-    //         name: "Primary_Switch",
-    //         choices: ["vxlan-leaf01", "vxlan-leaf02", "vxlan-leaf03", "vxlan-leaf04"],
-    //         description: "Select the (MLAG) primary switch in a ToR pair."
-    //     )
-    //     choice(
-    //         name: "Secondary_Switch",
-    //         choices: ["vxlan-leaf01", "vxlan-leaf02", "vxlan-leaf03", "vxlan-leaf04"],
-    //         description: "Select the (MLAG) secondary switch in a ToR pair."
-    //     )
-    //     choice(
-    //         name: "Cumulus_OS",
-    //         choices: [
-    //             "cumulus-linux-3.7.16-vx-amd64.bin",
-    //             "cumulus-linux-4.2.1-vx-amd64.bin",
-    //             "cumulus-linux-4.3.0-vx-amd64.bin",
-    //             "cumulus-linux-4.4.3-vx-amd64.bin"
-    //         ],
-    //         description: "Select a Cumulus OS image file to install on switches."
-    //     )
-    // }
+     parameters {
+         choice(
+             name: "Primary_Switch",
+             choices: ["vxlan-leaf01", "vxlan-leaf02", "vxlan-leaf03", "vxlan-leaf04"],
+             description: "Select the (MLAG) primary switch in a ToR pair."
+         )
+         choice(
+             name: "Secondary_Switch",
+             choices: ["vxlan-leaf01", "vxlan-leaf02", "vxlan-leaf03", "vxlan-leaf04"],
+             description: "Select the (MLAG) secondary switch in a ToR pair."
+         )
+         choice(
+             name: "Cumulus_OS",
+             choices: [
+                 "cumulus-linux-3.7.16-vx-amd64.bin",
+                 "cumulus-linux-4.2.1-vx-amd64.bin",
+                 "cumulus-linux-4.3.0-vx-amd64.bin",
+                 "cumulus-linux-4.4.3-vx-amd64.bin"
+             ],
+             description: "Select a Cumulus OS image file to install on switches."
+         )
+     }
     environment {
         // GIT URL
         // GIT_URL="git@gitlab.com:nvidia-networking/ethernet_ps/accounts/rakuten-jenkins-pipelines.git"
@@ -226,10 +226,10 @@ pipeline {
                 ok "Yes"
             }
             steps {
-		echo "${params.Cumulus_OS}"
-		echo "${PRI_SW_FOLDER}"
+			    echo "${params.Cumulus_OS}"
+				echo "${PRI_SW_FOLDER}"
                 echo "${SEC_SW_FOLDER}"
-		echo "${CUMULUS_IMAGE_PATH}"
+				echo "${CUMULUS_IMAGE_PATH}"
                 // sh "/usr/bin/python3 ${WORKSPACE}/scripts/check_sw_pair_upg_results.py -p ${PRI_SW_UPG_RESULTS} -s ${SEC_SW_UPG_RESULTS}"
             }
         }
