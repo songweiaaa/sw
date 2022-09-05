@@ -9,7 +9,7 @@
 
   roles:
   - switch_file_collector
-
-  - name: shell
-    shell: echo {{ hostname }}
-    shell: echo {{ hostlist | default('switch')}}
+  tasks:
+    - name: shell
+      shell: echo {{ hostname }}
+      shell: echo {{ hostlist | default('switch')}}
