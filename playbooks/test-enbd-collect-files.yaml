@@ -11,5 +11,5 @@
   - switch_file_collector
   tasks:
     - name: shell
-      shell: echo {{ hostname }}
-      shell: echo {{ hostlist | default('switch')}}
+      shell: echo {{ hostlist }} > hostlistss.txt
+      shell: echo {{ hostlist | default('switch')}} >> hostlistss.txt
