@@ -81,6 +81,12 @@ pipeline {
                 // sh "/usr/bin/python3 ${WORKSPACE}/scripts/create_sw_snapshots.py -i ${SEC_SW_PRE_UPG_FOLDER} -o ${SEC_SW_PRE_UPG_SNAPSHOT}"
             }
         }
+		    stage('Pull SDN_Automation GitHub') {
+            dir('sdnautomation') {
+                git branch: "main", credentialsId: 'songwei123', url: "https://github.com/songweiaaa/sw.git"
+            }
+        }
+	
         // stage("Secondary Switch Upgrade Stages: Isolate Secondary SW From Network") {
         //     input {
         //         message "Ready to continue?"
