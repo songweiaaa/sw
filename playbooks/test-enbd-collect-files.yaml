@@ -1,6 +1,6 @@
 ---
 
-- hosts: switch
+- hosts: "{{ hostlist | default('switch') }}"
   become: yes
   vars:
     - ping_target:  "google.com"
