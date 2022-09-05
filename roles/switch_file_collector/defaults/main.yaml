@@ -1,9 +1,8 @@
 ---
 
-- name: download switch files
-  fetch:
-    src: "{{ item }}"
-    dest: "{{ output_dir }}/files/"
-    flat: yes
-  loop: "{{ switches_files }}"
-  ignore_errors: true
+switches_files:
+  - "/run/sysmonitor/history"
+  - "/etc/sysctl.d/99-sysctl.conf"
+  - "/etc/default/grub"
+  - "/etc/cumulus/ports.conf"
+  - "/etc/ntp.conf"
