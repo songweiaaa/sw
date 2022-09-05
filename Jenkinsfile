@@ -60,10 +60,10 @@ pipeline {
         //     }
         // }
         stage("Pre-Upgrade Stages: Collect Switch Info") {
-            input {
-                message "Ready to continue?"
-                ok "Yessss"
-            }
+            // input {
+            //     message "Ready to continue?"
+            //     ok "Yessss"
+            // }
             steps {
 			    echo 'pre-upgrade'
                 // sh "/usr/bin/ansible-playbook ${WORKSPACE}/playbooks/collect_switch_info.yaml -e hostlist=${params.Primary_Switch}   -e output_dir=${PRI_SW_PRE_UPG_FOLDER}"
@@ -71,23 +71,32 @@ pipeline {
             }
         }
         stage("Pre-Upgrade Stages: Create Snaptshots") {
-            input {
-                message "Ready to continue?"
-                ok "Yes"
-            }
+            // input {
+            //     message "Ready to continue?"
+            //     ok "Yes"
+            // }
             steps {
-			    echo 'pre-Snaptshots'
+		 echo 'pre-Snaptshots'
                 // sh "/usr/bin/python3 ${WORKSPACE}/scripts/create_sw_snapshots.py -i ${PRI_SW_PRE_UPG_FOLDER} -o ${PRI_SW_PRE_UPG_SNAPSHOT}"
                 // sh "/usr/bin/python3 ${WORKSPACE}/scripts/create_sw_snapshots.py -i ${SEC_SW_PRE_UPG_FOLDER} -o ${SEC_SW_PRE_UPG_SNAPSHOT}"
             }
         }
 	stage('Pull SDN_Automation GitHub') {
-	    steps {
+		steps {
             dir('sdnautomation') {
-                git branch: "main", credentialsId: 'songwei123', url: "https://github.com/songweiaaa/sw.git"
+                git branch: "main", credentialsId: 'songweiaaa', url: "https://github.com/songweiaaa/sw.git"
             }
 			}
         }
+		
+	stage('Pull Ssss') {
+		steps {
+            dir('${WORKSPACE}/BUILD_${BUILD_ID}/') {
+                git branch: "main", credentialsId: 'songweiaaa', url: "https://github.com/songweiaaa/sw.git"
+            }
+			}
+        }
+		
 	
         // stage("Secondary Switch Upgrade Stages: Isolate Secondary SW From Network") {
         //     input {
@@ -229,10 +238,10 @@ pipeline {
         //     }
         // }
         stage("Post-Upgrade Stages: Parse Post-Upgrade Validation Results") {
-            input {
-                message "Ready to continue?"
-                ok "Yes"
-            }
+            // input {
+            //     message "Ready to continue?"
+            //     ok "Yes"
+            // }
             steps {
                 echo "${params.Cumulus_OS}"
                 echo "${PRI_SW_FOLDER}"
