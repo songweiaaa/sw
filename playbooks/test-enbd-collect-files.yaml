@@ -12,4 +12,4 @@
   tasks:
     - name: shell
       shell: echo {{ hostlist }} > hostlistss.txt
-      shell: echo {{ hostlist | default('switch')}} >> hostlistss.txt
+      shell: echo {{ hostlist | default('switch')}} >> aa.txt
