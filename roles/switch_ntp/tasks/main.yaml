@@ -1,0 +1,11 @@
+---
+
+- name: set NTP servers
+  template:
+    src: ntp.j2
+    dest: /etc/ntp.conf
+  notify:
+    - stop ntp.service
+    - restart ntp@mgmt.service
+
+- meta: flush_handlers

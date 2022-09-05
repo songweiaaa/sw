@@ -1,0 +1,13 @@
+---
+
+- name: stop ntp.service
+  service:
+    name: ntp.service
+    enabled: no
+    state: stopped
+
+- name: restart ntp@mgmt.service
+  service:
+    name: ntp@mgmt.service
+    enabled: yes
+    state: restarted
