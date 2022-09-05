@@ -226,10 +226,10 @@ pipeline {
                 ok "Yes"
             }
             steps {
-			    echo ${params.Cumulus_OS}
-				ehco ${PRI_SW_FOLDER}
-                echo ${SEC_SW_FOLDER}
-				ehco ${CUMULUS_IMAGE_PATH}
+			    echo "${params.Cumulus_OS}"
+				ehco "${PRI_SW_FOLDER}"
+                echo "${SEC_SW_FOLDER}"
+				ehco "${CUMULUS_IMAGE_PATH}"
                 // sh "/usr/bin/python3 ${WORKSPACE}/scripts/check_sw_pair_upg_results.py -p ${PRI_SW_UPG_RESULTS} -s ${SEC_SW_UPG_RESULTS}"
             }
         }
