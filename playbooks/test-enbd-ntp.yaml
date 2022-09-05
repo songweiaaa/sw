@@ -1,0 +1,11 @@
+---
+
+- hosts: switch
+  become: yes
+
+  tasks:
+
+
+  - name: config NTP
+    include_role:
+      name: switch_ntp
