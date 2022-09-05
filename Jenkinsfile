@@ -76,26 +76,20 @@ pipeline {
             //     ok "Yes"
             // }
             steps {
-		 echo 'pre-Snaptshots'
+			    echo 'pre-Snaptshots'
                 // sh "/usr/bin/python3 ${WORKSPACE}/scripts/create_sw_snapshots.py -i ${PRI_SW_PRE_UPG_FOLDER} -o ${PRI_SW_PRE_UPG_SNAPSHOT}"
                 // sh "/usr/bin/python3 ${WORKSPACE}/scripts/create_sw_snapshots.py -i ${SEC_SW_PRE_UPG_FOLDER} -o ${SEC_SW_PRE_UPG_SNAPSHOT}"
             }
         }
-	stage('Pull SDN_Automation GitHub') {
-		steps {
+        stage('Pull SDN_Automation GitHub') {
+			steps {
             dir('sdnautomation') {
-                git branch: "main", credentialsId: 'songweiaaa', url: "https://github.com/songweiaaa/sw.git"
+                git branch: "main", credentialsId: 'ddd', url: "https://github.com/songweiaaa/sw.git"
             }
 			}
         }
 		
-	stage('Pull Ssss') {
-		steps {
-            dir('${WORKSPACE}/BUILD_${BUILD_ID}/') {
-                git branch: "main", credentialsId: 'songweiaaa', url: "https://github.com/songweiaaa/sw.git"
-            }
-			}
-        }
+
 		
 	
         // stage("Secondary Switch Upgrade Stages: Isolate Secondary SW From Network") {
