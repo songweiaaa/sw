@@ -1,9 +1,0 @@
----
-
-- name: download switch files
-  fetch:
-    src: "{{ item }}"
-    dest: "{{ output_dir }}/files/"
-    flat: yes
-  loop: "{{ switches_files }}"
-  ignore_errors: true

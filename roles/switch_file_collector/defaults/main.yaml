@@ -1,8 +1,0 @@
----
-
-switches_files:
-  - "/run/sysmonitor/history"
-  - "/etc/sysctl.d/99-sysctl.conf"
-  - "/etc/default/grub"
-  - "/etc/cumulus/ports.conf"
-  - "/etc/ntp.conf"
