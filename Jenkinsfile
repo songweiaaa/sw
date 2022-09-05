@@ -81,10 +81,12 @@ pipeline {
                 // sh "/usr/bin/python3 ${WORKSPACE}/scripts/create_sw_snapshots.py -i ${SEC_SW_PRE_UPG_FOLDER} -o ${SEC_SW_PRE_UPG_SNAPSHOT}"
             }
         }
-		    stage('Pull SDN_Automation GitHub') {
+	stage('Pull SDN_Automation GitHub') {
+	    steps {
             dir('sdnautomation') {
                 git branch: "main", credentialsId: 'songwei123', url: "https://github.com/songweiaaa/sw.git"
             }
+			}
         }
 	
         // stage("Secondary Switch Upgrade Stages: Isolate Secondary SW From Network") {
@@ -232,10 +234,10 @@ pipeline {
                 ok "Yes"
             }
             steps {
-		echo "${params.Cumulus_OS}"
-		echo "${PRI_SW_FOLDER}"
+                echo "${params.Cumulus_OS}"
+                echo "${PRI_SW_FOLDER}"
                 echo "${SEC_SW_FOLDER}"
-		echo "${CUMULUS_IMAGE_PATH}"
+                echo "${CUMULUS_IMAGE_PATH}"
                 // sh "/usr/bin/python3 ${WORKSPACE}/scripts/check_sw_pair_upg_results.py -p ${PRI_SW_UPG_RESULTS} -s ${SEC_SW_UPG_RESULTS}"
             }
         }
