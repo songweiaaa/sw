@@ -7,8 +7,8 @@ pipeline {
          // Credential ID needs to be updated accordingly for different Jenkins env.
          GIT_CREDENTIALS = "ddd"
 
-        SW_FOLDER = "${WORKSPACE}/BUILD_${BUILD_ID}/${params.ENBD_Switch}/"
-
+        //SW_FOLDER = "${WORKSPACE}/BUILD_${BUILD_ID}/${params.ENBD_Switch}/"
+        SW_FOLDER = "${WORKSPACE}/BUILD_${BUILD_ID}/"
         ENBD_Switch_Collection_folder = "${SW_FOLDER}" + "sw-info/"
 
     }
@@ -31,7 +31,8 @@ pipeline {
         stage("Collect cumulus files") {
             steps {
 			    echo 'Collectting cumulus files'
-                sh "/usr/bin/ansible-playbook ${WORKSPACE}/playbooks/test-enbd-collect-files.yaml -e hostlist=${params.ENBD_Switch} -e output_dir=${ENBD_Switch_Collection_folder}"
+		sh "/usr/bin/ansible-playbook ${WORKSPACE}/playbooks/test-enbd-collect-files.yaml  -e output_dir=${ENBD_Switch_Collection_folder}"
+                //sh "/usr/bin/ansible-playbook ${WORKSPACE}/playbooks/test-enbd-collect-files.yaml -e hostlist=${params.ENBD_Switch} -e output_dir=${ENBD_Switch_Collection_folder}"
             }
         }
 
