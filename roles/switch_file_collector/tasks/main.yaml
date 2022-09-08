@@ -1,9 +1,13 @@
 ---
+- name: Check hostname
+    shell: hostname
+    register: SW_hostname
+    ignore_errors: true
 
 - name: download switch files
   fetch:
     src: "{{ item }}"
-    dest: "{{ output_dir }}/{{ hostlist }}/files/"
+    dest: "{{ output_dir }}/{{ SW_hostname }}/files/"
     flat: yes
   loop: "{{ switches_files }}"
   ignore_errors: true
