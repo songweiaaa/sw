@@ -9,7 +9,7 @@ pipeline {
 
         SW_FOLDER = "${WORKSPACE}/BUILD_${BUILD_ID}/${params.ENBD_Switch}/"
 
-        ENBD_Switch_Collection_folder = "${SW_FOLDER}" + "pre_upgrade_folder/"
+        ENBD_Switch_Collection_folder = "${SW_FOLDER}" + "sw-info/"
 
     }
     stages {
