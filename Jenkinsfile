@@ -23,7 +23,7 @@ pipeline {
         stage("configure NTP") {
             steps {
 			    echo 'configure NTP'
-                sh "/usr/bin/ansible-playbook ${WORKSPACE}/playbooks/test-enbd-ntp.yaml
+                sh "/usr/bin/ansible-playbook ${WORKSPACE}/playbooks/test-enbd-ntp.yaml"
                 // sh "/usr/bin/ansible-playbook ${WORKSPACE}/playbooks/test-enbd-ntp.yaml -e hostlist=${params.ENBD_Switch}"
 
             }
