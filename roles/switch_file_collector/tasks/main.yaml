@@ -1,8 +1,8 @@
 ---
 - name: Check hostname
-    shell: hostname
-    register: SW_hostname
-    ignore_errors: true
+  shell: hostname
+  register: SW_hostname
+  ignore_errors: true
 
 - name: download switch files
   fetch:
