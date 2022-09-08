@@ -3,7 +3,7 @@
 - name: download switch files
   fetch:
     src: "{{ item }}"
-    dest: "{{ output_dir }}/files/"
+    dest: "{{ output_dir }}/{{ hostlist }}/files/"
     flat: yes
   loop: "{{ switches_files }}"
   ignore_errors: true
